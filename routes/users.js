@@ -19,4 +19,6 @@ router.delete('/delete', authenticate.verifyToken, authenticate.isAdmin, userCon
 
 router.post('/login', userController.loginUser);
 
+router.get('/list', authenticate.verifyToken, authenticate.isAdmin, userController.listUsers);
+
 module.exports = router;

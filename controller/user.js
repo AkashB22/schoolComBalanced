@@ -109,4 +109,14 @@ userController.loginUser = async function (req, res, next){
     }
 }
 
+userController.listUsers = async function(req, res, next){
+    try {
+        let listUsers = await userService.listUsers();
+
+        res.status(200).json(listUsers);
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = userController;

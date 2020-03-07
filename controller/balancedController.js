@@ -18,7 +18,9 @@ balancedController.check = async function(req, res, next){
                 balancedData.message = '';
             }
             let updatedBalancedData = await balancedService.update(balancedData);
-            res.status(200).json({updatedBalancedData});
+            delete updatedBalancedData._doc._id;
+            delete updatedBalancedData._doc.__v;
+            res.status(200).json({...updatedBalancedData._doc, result});
         } else{
             let newBalancedData = {};
             newBalancedData.user = user
@@ -29,7 +31,9 @@ balancedController.check = async function(req, res, next){
                 newBalancedData.message = '';
             }
             let savedBalancedData = await balancedService.create(newBalancedData);
-            res.status(200).json({savedBalancedData});
+            delete savedBalancedData._doc._id;
+            delete savedBalancedData._doc.__v;
+            res.status(200).json({...savedBalancedData._doc, result});
         }
         
     } catch (error) {

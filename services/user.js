@@ -32,4 +32,8 @@ userService.readUserById = async function(id){
     return await UserModel.findById(id);
 }
 
+userService.listUsers = async function(){
+    return await UserModel.find().select('-password');
+}
+
 module.exports = userService;
