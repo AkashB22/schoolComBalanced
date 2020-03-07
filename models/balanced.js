@@ -4,7 +4,7 @@ let uniqueValidator = require('mongoose-unique-validator');
 let Schema = mongoose.Schema;
 
 let BalancedSchema = new Schema({
-    username: {
+    user: {
         type: String,
         unique: true
     },
@@ -16,6 +16,7 @@ BalancedSchema.plugin(uniqueValidator);
 
 BalancedSchema.methods.increaseAttempts = function(){
     this.attempts = this.attempts + 1;
+    return this;
 }
 
 module.exports = mongoose.model('balanced', BalancedSchema);
