@@ -9,7 +9,7 @@ balancedController.check = async function(req, res, next){
 
     try {
         let result = await balancedFunction.run(inputStr);
-        let balancedData = await balancedService.read(user);
+        let balancedData = await balancedService.readUser(user);
         if(balancedData){
             balancedData.increaseAttempts();
             if(!(result.indexOf('unbalanced') > -1)){

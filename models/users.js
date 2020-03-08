@@ -12,7 +12,10 @@ let UserSchema = new Schema({
     },
     password: String,
     DOB: String,
-    username: String,
+    username: {
+        type: String,
+        unique: true
+    },
     role: String
 });
 UserSchema.plugin(uniqueValidator);

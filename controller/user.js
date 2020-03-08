@@ -113,7 +113,7 @@ userController.listUsers = async function(req, res, next){
     try {
         let listUsers = await userService.listUsers();
 
-        res.status(200).json(listUsers);
+        res.status(200).json({registeredUsers: listUsers});
     } catch (error) {
         next(error);
     }

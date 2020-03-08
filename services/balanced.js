@@ -13,7 +13,7 @@ balancedService.create = async function(balancedData){
     return savedBalanced;
 }
 
-balancedService.read = async function(user){
+balancedService.readUser = async function(user){
     return await BalancedModel.findOne({user});
 }
 
